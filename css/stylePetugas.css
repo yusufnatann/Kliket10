@@ -1,0 +1,142 @@
+body{
+    background-image: url('IMG BELAKANG LOGIN.png');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    background-color: rgba(240, 243, 246, 0.648);
+    backdrop-filter: blur(3px); /* Add blur effect */
+}
+
+.navbar .nav-items {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar .nav-items li em {
+font-weight:600;
+}
+
+.navbar li a {
+    color: #000;
+    font-weight: 500;
+}
+
+.navbar .logo {
+    margin-right: 10px;
+    height: 30px;
+}
+
+.navbar .nav-items li:last-child {
+    margin-left: 10px;
+}
+
+.logout{
+    width: 25px;
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .navbar .logo {
+        height: 30px;
+        margin: 0 auto;
+    }
+
+    .image-list a img {
+    max-width: 90%; /* Mengatur gambar menjadi 50% dari lebar kontainer pada layar kecil */
+    }
+}
+
+.image-list {
+    display: flex;
+    justify-content: center;
+    margin:auto;
+}
+
+.image-list img {
+    margin: 0 30px;
+    margin-right: 30px;
+    flex: 100px;
+    margin-top: 50px;
+    width: 200px;
+    height: auto;
+}
+
+.image-list img:hover {
+    transform: scale(1.1);
+}
+
+
+.text-center h1{
+    text-align: center;
+    margin-top: 200px;
+}
+
+.text-center{
+    font-family: 'poppins', 'sans-serif';
+    font-weight: 600;
+}
+
+h1 {
+    margin-top: 100px;
+    text-align: center;
+    color: #333;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.order-table th, .order-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.order-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.action-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.hadir {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tidak-hadir {
+    background-color: #f44336;
+    color: white;
+}

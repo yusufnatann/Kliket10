@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kliket</title>
+    <link rel="stylesheet" href="css/style(2).css">
+    <STYLE>
+        .search-bar{
+            margin-left:1100px;
+            font-size: 60;
+            
+        }
+
+    </STYLE>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="nav">
+        <label>
+            <input type="checkbox" class="hiddens">
+            <div class="toggle">
+                <span class="top_line common"></span>
+                <span class="middle_line common"></span>
+                <span class="bottom_line common"></span>
+            </div>
+            
+        </label>
+                
+        <div class="cont">
+            <nav>
+                <a href="index.html"><img src="img/Kliket-logo-blue.png" class="logo"></a>
+                <ul>
+                    <li><a href=""><img src="img/user_icon.png" class="logo2">User</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <main>
+        <h4 style="font-size:25px; margin-left: 90px; margin-top: 50px;">Data Petugas</h4>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" style="font-size: 20px; margin-top: 0px;" placeholder="Cari Petugas...">
+            
+            <button onclick="tambahPetugas()" style="background-color: #007bff; border:none; border-radius:4px; color:white; font-size: 15px; padding: 6px 6px;">Tambah Petugas</button>
+
+            
+        </div>
+    </div>
+</main>
+
+<script>
+    function searchPetugas() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const table = document.getElementById('petugasTable');
+        const tr = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < tr.length; i++) {
+            const td = tr[i].getElementsByTagName('td');
+            let display = false;
+            for (let j = 0; j < td.length - 1; j++) {
+                if (td[j].innerText.toLowerCase().indexOf(input) > -1) {
+                    display = true;
+                    break;
+                }
+            }
+            tr[i].style.display = display ? '' : 'none';
+        }
+    }
+</script>
+
+
+</body>
+</html>

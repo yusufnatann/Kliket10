@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.nav {
+    width: 100%;
+    height: 55px;
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    margin-left: 70px;
+    margin-top: 22px;
+    width: 80px;
+}
+
+.logo:hover {
+    transition: 0.1s ease;
+    opacity: 0.3;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0px 15px;
+    margin-top: 12px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #0D6EFD;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    transition: 1s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.logo2 {
+    margin-bottom: -10px;
+    width: 33px;
+}
+
+.bartiga {
+    height: 100%;
+    width: 180px;
+    position: absolute;
+    background-color: white;
+    transition: 0.5s ease;
+    transform: translateX(-180px);
+}
+
+.title {
+    color: white;
+    font-weight: 800;
+    text-align: right;
+    padding: 10px 0;
+    padding-right: 30px;
+    pointer-events: none;
+}
+
+.navmenu li {
+    list-style: none;
+}
+
+.navmenu li a {
+    color: black;
+    font-weight: 500;
+    padding: 5px 0;
+    display: block;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: 0.2s ease-out;
+}
+
+.navmenu li:hover a {
+    transition: 1s;
+    background-color: #0D6EFD;
+}
+
+.navmenu li a .icon {
+    width: 13%;
+    text-align: center;
+}
+
+.hiddens {
+    display: none;
+    visibility: hidden;
+}
+
+.toggle {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    left: 15px;
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.toggle .common {
+    position: absolute;
+    height: 2px;
+    width: 20px;
+    background-color: black;
+    border-radius: 50px;
+    transition: 0.3 ease;
+}
+
+.toggle .top_line {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.toggle .middle_line {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.toggle .bottom_line {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+input:checked ~ .toggle .top_line {
+    top: 14px;
+    left: 2px;
+    right: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+}
+
+input:checked ~ .toggle .middle_line {
+    top: 14px;
+    left: 2px;
+    right: 14px;
+    width: 25px;
+    transform: rotate(-45deg);
+}
+
+input:checked ~ .toggle .bottom_line {
+    opacity: 0;
+}
+
+input:checked ~ .bartiga {
+    transform: translateX(0);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 20px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 800px;
+    margin: 0 auto;
+    gap: 20px;
+    padding: 150px;
+}
+
+.item {
+    background-color: #0D6EFD;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.item h3 {
+    color: white; /* Mengatur warna teks menjadi putih */
+}
+
+.item:hover {
+    transform: translateY(-10px);
+}
+
+.item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.bg_log {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.3; /* Atur opasitas sesuai kebutuhan */
+}
+

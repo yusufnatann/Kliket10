@@ -1,0 +1,9 @@
+INSERT INTO rute (waktu_berangkat, asal, kapasitas, tanggal_berangkat) VALUES
+('09:00:00', 'Kota A', 40, '2024-06-01'),
+('13:00:00', 'Kota B', 30, '2024-06-01'),
+('16:00:00', 'Kota C', 35, '2024-06-01')
+
+INSERT INTO rute_akhir (ruteid, tujuan) VALUES
+(1,'Kota A'),
+(2,'Kota B'),
+(3,'Kota C')
