@@ -1,6 +1,15 @@
 <?php
 include 'database/koneksi.php';
 include 'database/auth.php';
+
+$tiketQuery = "SELECT t.tiketID, t.pembayaran, r.asal, r.tujuan, r.waktu_berangkat, r.tanggal_berangkat 
+                FROM tiket t 
+                JOIN rute r ON t.ruteID = r.ruteID 
+                WHERE t.userID = ?";
+$stmt = $conn->prepare($tiketQuery);
+$stmt->bind_param('i', $userID);
+$stmt->execute();
+$tiketResult = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +17,7 @@ include 'database/auth.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesanan Saya</title>
+    <title>Riwayat Tiket</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tabel.css">
 </head>
@@ -29,7 +38,7 @@ include 'database/auth.php';
                     <li><a href="profile.php"><img src="img/user_icon.png" class="icon">Akun</a></li>
                     <li><a href="pesanan.php"><img src="img/user_icon.png" class="icon">Pesanan Saya</a></li>
                     <li><a href="riwayat.php"><img src="img/user_icon.png" class="icon">Riwayat Tiket</a></li>
-                    <li><a href="faq.html"><img src="img/user_icon.png" class="icon">FAQ</a></li>
+                    <li><a href="faq.php"><img src="img/user_icon.png" class="icon">FAQ</a></li>
                     <li><a href="database/logout.php"><img src="img/user_icon.png" class="icon">Keluar</a></li>
                 </ul>
             </div>
@@ -39,13 +48,11 @@ include 'database/auth.php';
             <nav>
                 <a href="index.php"><img src="img/Kliket-logo-blue.png" class="logo"></a>
                 <ul>
-                    <li><a href=""><img src="img/user_icon.png" class="logo2"><?php echo htmlspecialchars($nama); ?></a></li>
+                    <li><a href="profile.php"><img src="img/user_icon.png" class="logo2"><?php echo htmlspecialchars($nama); ?></a></li>
                 </ul>
             </nav>
         </div>
     </div>
-
-    <!-- Pesan Tiket -->
 
     <div class="cons">
     <img src="img/background_pesan.png" class="bg_pesan">
@@ -64,36 +71,37 @@ include 'database/auth.php';
                         <th>Terminal Tujuan</th>
                         <th>Waktu Berangkat</th>
                         <th>Tanggal Berangkat</th>
-                        <th>Bayar</th>
-                        <th>Batal</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    // Query untuk mendapatkan tiket yang belum dibayar dari database
-                    $query = "SELECT t.tiketID, r.asal, r.tujuan, r.waktu_berangkat, r.tanggal_berangkat , r.ruteID
-                            FROM tiket t
-                            JOIN rute r ON t.ruteID = r.ruteID
-                            WHERE t.userID = {$_SESSION['userID']} AND t.pembayaran = 0";
-                    $result = mysqli_query($conn, $query);
-
-                    if (mysqli_num_rows($result) > 0) {
+                    if ($tiketResult->num_rows > 0) {
                         $no = 1;
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>
-                                    <td>{$no}</td>
-                                    <td>{$row['asal']}</td>
-                                    <td>{$row['tujuan']}</td>
-                                    <td>{$row['waktu_berangkat']}</td>
-                                    <td>{$row['tanggal_berangkat']}</td>
-                                    <td><a href='database/checkout.php?tiketID={$row['tiketID']}'>Bayar</a></td>
-                                    <td><a href='database/cancel.php?tiketID={$row['tiketID']}'>Batal</a></td>
-                                  </tr>";
+                        while ($row = $tiketResult->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $no . "</td>";
+                            echo "<td>" . $row['asal'] . "</td>";
+                            echo "<td>" . $row['tujuan'] . "</td>";
+                            echo "<td>" . $row['waktu_berangkat'] . "</td>";
+                            echo "<td>" . $row['tanggal_berangkat'] . "</td>";
+                            echo "<td>";
+                            if ($row['pembayaran'] == 1) {
+                                echo "Sudah Bayar";
+                            } elseif ($row['pembayaran'] == 2) {
+                                echo "Batal";
+                            } else {
+                                echo "Belum Dibayar";
+                            }
+                            echo "</td>";
+                            echo "</tr>";
                             $no++;
                         }
                     } else {
-                        echo "<tr><td colspan='8'>Tidak ada tiket yang dipesan</td></tr>";
+                        echo "<tr><td colspan='6'>Tidak ada riwayat tiket.</td></tr>";
                     }
+                    $stmt->close();
+                    $conn->close();
                     ?>
                 </tbody>
             </table>

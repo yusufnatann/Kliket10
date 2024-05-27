@@ -1,0 +1,74 @@
+Mendaftarkan akun
+register.html + database/register.php
+
+Melihat riwayat tiket
+riwayat.php
+
+Melakukan pembatalan tiket
+pemesanan.php
+? + waktu memesan tiket
+
+Memesan tiket
+list.php (list tiket) + checkout.php + cari tiket + showRute.php (klik pesan) + pesan_tiket.php (nambah tiket ke user)
+
+Melihat faq (BLM)
+
+
+Database :
+
+General
+Login(D)
+Logout (D)
+Register (D)
+Login_Authenticator (D)
+Forget Password (D)
+Edit Profile (D)
+
+User
+Riwayat Tiket (D)
+Pesanan Saya (D)
+List tiket (D)
+
+Pemesanan Tiket
+Cari tiket
+Pembayaran (D) (+ Diapprov admin/gateway)
+Cek Tiket (D)
+Batal Tiket (D) (+ Blm masuk history)
+
+Petugas
+List Tiket dengan hadir/tidak hadir
+List pelanggan per rute
+
+Admin
+Tambah akun admin/petugas sesuai kategoriID
+List akun petugas
+List akun admin
+Tambah bus
+Tambah rute
+Tambah tiket
+
+
+UI
+General
+
+
+User
+
+
+Petugas
+
+
+Admin
+
+
+Css
+General
+
+
+User
+
+
+Petugas
+
+
+Admin

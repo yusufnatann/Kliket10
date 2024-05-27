@@ -1,0 +1,122 @@
+.boxs {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-info {
+    text-align: left;
+    width: 100%;
+}
+
+.profile-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+#editProfileBtn {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#editProfileBtn:hover {
+    background-color: #0056b3;
+}
+
+.popup-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    z-index: 10;
+}
+
+.popup-form.active {
+    display: block;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.popup-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.popup-form label {
+    font-size: 14px;
+    color: #333;
+}
+
+.popup-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.popup-form button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-form button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.popup-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.popup-form button[type="button"] {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.popup-form button[type="button"]:hover {
+    background-color: #5a6268;
+}

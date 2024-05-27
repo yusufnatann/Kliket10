@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 02:10 AM
+-- Generation Time: May 27, 2024 at 03:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,11 +41,12 @@ CREATE TABLE `akun` (
 INSERT INTO `akun` (`userID`, `username`, `kategoriID`, `kata_sandi`) VALUES
 (1, 'admin', 1, 'admin'),
 (2, 'anta', 2, 'anta'),
-(3, 'enggal', 3, 'enggal'),
+(3, 'enggal', 3, 'haha'),
 (12, 'a', 2, 'a'),
 (13, 'ademin', 3, 'ademin'),
 (15, 'berlian', 3, 'berlian'),
-(16, 'nepenthes', 3, 'nep');
+(16, 'nepenthes', 3, 'nep'),
+(18, 'MIMA', 3, 'mima');
 
 -- --------------------------------------------------------
 
@@ -106,10 +107,12 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`userid`, `username`, `nama`, `email`) VALUES
+(3, 'enggal', 'Enggal bima sakti', 'enggalbim@gmail.com'),
 (12, 'a', 'a', 'a@a.com'),
 (13, 'ademin', 'ademin', 'ademin@ademin.com'),
-(15, 'berlian', 'berlian', 'berlian@gmail.com'),
-(16, 'nepenthes', 'nepenthes', 'nep@gmail.com');
+(15, 'berlian', 'Berli Anta Atrizki', 'berlian@gmail.com'),
+(16, 'nepenthes', 'nepenthes', 'nep@gmail.com'),
+(18, 'MIMA', 'MIMA', 'mima@mima.com');
 
 -- --------------------------------------------------------
 
@@ -131,8 +134,8 @@ CREATE TABLE `rute` (
 
 INSERT INTO `rute` (`ruteID`, `waktu_berangkat`, `asal`, `tanggal_berangkat`, `tujuan`) VALUES
 (1, '08:00:00', 'Jakarta', '2024-06-01', 'Bandung'),
-(2, '09:00:00', 'Jakarta', '2024-06-01', 'Yogyakarta'),
-(3, '10:00:00', 'Bandung', '2024-06-02', 'Surabaya');
+(2, '11:00:00', 'Jakarta', '2024-06-01', 'Yogyakarta'),
+(3, '15:00:00', 'Bandung', '2024-06-02', 'Surabaya');
 
 -- --------------------------------------------------------
 
@@ -156,30 +159,36 @@ CREATE TABLE `tiket` (
   `tiketID` int(11) NOT NULL,
   `ruteID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `pembayaran` int(11) DEFAULT NULL
+  `pembayaran` int(11) DEFAULT NULL,
+  `status_kehadiran` varchar(20) DEFAULT 'Belum Ditentukan'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tiket`
 --
 
-INSERT INTO `tiket` (`tiketID`, `ruteID`, `userID`, `pembayaran`) VALUES
-(1, 1, 12, 1),
-(2, 1, 12, 1),
-(3, 1, 13, 0),
-(4, 2, 15, 1),
-(5, 2, 16, 0),
-(20, 1, 3, 0),
-(21, 1, 3, 0),
-(22, 1, 3, 0),
-(23, 1, 3, 0),
-(26, 2, 3, 0),
-(31, 2, 15, 1),
-(33, 2, 15, 1),
-(34, 2, 15, 0),
-(35, 1, 15, 1),
-(36, 2, 15, 1),
-(37, 2, 15, 0);
+INSERT INTO `tiket` (`tiketID`, `ruteID`, `userID`, `pembayaran`, `status_kehadiran`) VALUES
+(1, 1, 12, 1, 'Hadir'),
+(2, 1, 12, 1, 'Tidak Hadir'),
+(3, 1, 13, 0, 'Belum Ditentukan'),
+(4, 2, 15, 1, 'Hadir'),
+(5, 2, 16, 0, 'Belum Ditentukan'),
+(20, 1, 3, 2, 'Belum Ditentukan'),
+(21, 1, 3, 0, 'Belum Ditentukan'),
+(22, 1, 3, 0, 'Belum Ditentukan'),
+(23, 1, 3, 2, 'Belum Ditentukan'),
+(26, 2, 3, 2, 'Belum Ditentukan'),
+(31, 2, 15, 1, 'Belum Ditentukan'),
+(33, 2, 15, 1, 'Belum Ditentukan'),
+(34, 2, 15, 2, 'Belum Ditentukan'),
+(35, 1, 15, 1, 'Belum Ditentukan'),
+(36, 2, 15, 1, 'Belum Ditentukan'),
+(37, 2, 15, 0, 'Belum Ditentukan'),
+(38, 1, 3, 0, 'Belum Ditentukan'),
+(39, 2, 2, 0, 'Belum Ditentukan'),
+(40, 2, 3, 1, 'Hadir'),
+(41, 2, 3, 1, 'Tidak Hadir'),
+(42, 2, 3, 0, 'Belum Ditentukan');
 
 --
 -- Indexes for dumped tables
@@ -239,7 +248,7 @@ ALTER TABLE `tiket`
 -- AUTO_INCREMENT for table `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `rute`
@@ -257,7 +266,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `tiketID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `tiketID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Constraints for dumped tables
