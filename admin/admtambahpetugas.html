@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Petugas</title>
+    <link rel="stylesheet" href="css/style(3).css">
+</head>
+<body>
+    
+    <div class="nav">
+        <nav>
+            <a href=""><img src="img/Kliket-logo-blue.png" class="logo"></a>
+        </nav>
+    </div>
+
+    <div class="box">
+        <div class="conta">
+            <img src="img/background_login.png" class="bg_log">
+            <div class="login">
+                <form class="log-form" action="database/login.php" method="POST">
+                    <h1 class="login-title">Tambah Data Petugas</h1>
+                    <div class="input-box">
+                        <input type="text" class="inp-b" id="Username" name="Username" placeholder="Username" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="inp-b" id="Email" name="Email" placeholder="Email" required>
+                    </div>
+                    <a href="admbuatpw.html">
+                        <button type="submit" class="btn">Next</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Script for hide/show password -->
+    <script>
+        let eyeicon = document.getElementById("eyeicon");
+        let password = document.getElementById("password");
+
+        eyeicon.onclick = function(){
+            if(password.type == "password"){
+                password.type = "text";
+                eyeicon.src = "/img/eyeopen.png";
+            }
+            else {
+                password.type = "password";
+                eyeicon.src = "/img/eyeclose.png";
+            }
+        }
+    </script>
+</body>
+</html>

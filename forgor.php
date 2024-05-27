@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/loading.js" defer></script>
-    <title>Daftar Akun</title>
+    <title>Lupa Password</title>
 </head>
 <body>
     <div class="nav">
@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
                     <div class="input-box">
                         <input type="email" class="inp-b" id="email" name="email" placeholder="Email" required>
                     </div>
-                    <button type="submit" class="btn">Daftar</button>
+                    <button type="submit" class="btn">Submit</button>
                     <div class="register-link">
                         <p>Sudah punya akun? <a href="login.html">Login</a></p>
                     </div>

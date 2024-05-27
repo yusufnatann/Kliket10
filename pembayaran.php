@@ -13,7 +13,6 @@ $user = $result->fetch_assoc();
 $ruteID = $_GET['ruteID'];
 $tiketID = $_GET['tiketID'];
 
-// Ambil data rute
 $sql = "SELECT r.asal, r.tujuan, r.waktu_berangkat, r.tanggal_berangkat
         FROM rute r
         WHERE r.ruteID = '$ruteID'";
@@ -38,7 +37,7 @@ if ($result->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kliket - Home</title>
+    <title>Checkout</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -55,10 +54,10 @@ if ($result->num_rows > 0) {
             <div class="bartiga">
                 <h1 class="title">‎ </h1>
                 <ul class="navmenu">
-                    <li><a href="#"><img src="img/user_icon.png" class="icon">Akun</a></li>
+                    <li><a href="profile.php"><img src="img/user_icon.png" class="icon">Akun</a></li>
                     <li><a href="pesanan.php"><img src="img/user_icon.png" class="icon">Pesanan Saya</a></li>
-                    <li><a href="#"><img src="img/user_icon.png" class="icon">Riwayat Tiket</a></li>
-                    <li><a href="#"><img src="img/user_icon.png" class="icon">FAQ</a></li>
+                    <li><a href="riwayat.php"><img src="img/user_icon.png" class="icon">Riwayat Tiket</a></li>
+                    <li><a href="faq.php"><img src="img/user_icon.png" class="icon">FAQ</a></li>
                     <li><a href="database/logout.php"><img src="img/user_icon.png" class="icon">Keluar</a></li>
                 </ul>
             </div>
@@ -68,8 +67,7 @@ if ($result->num_rows > 0) {
             <nav>
                 <a href="index.php"><img src="img/Kliket-logo-blue.png" class="logo"></a>
                 <ul>
-                    <li><a href="">Cek Tiket</a></li>
-                    <li><a href=""><img src="img/user_icon.png" class="logo2"><?php echo $user['username']; ?></a></li>
+                    <li><a href="profile.php"><img src="img/user_icon.png" class="logo2"><?php echo $user['username']; ?></a></li>
                 </ul>
             </nav>
         </div>

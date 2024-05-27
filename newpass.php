@@ -1,34 +1,28 @@
 <?php
-// include file untuk koneksi ke database
 include 'database/koneksi.php';
 
 if (isset($_GET['userID'])) {
     $userID = $_GET['userID'];
 } else {
-    // Redirect ke halaman login jika userID tidak ada
     header("Location: login.html");
     exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Ambil password baru dari form
     $new_password = $_POST['new_password'];
 
-    // Query untuk memperbarui password di tabel akun berdasarkan userID
     $update_query = "UPDATE akun SET kata_sandi = ? WHERE userID = ?";
     $update_stmt = $conn->prepare($update_query);
     $update_stmt->bind_param("si", $new_password, $userID);
 
     if ($update_stmt->execute()) {
         echo "Password berhasil diperbarui. Silakan login dengan password baru Anda.";
-        // Redirect ke halaman login
         header("Location: login.html");
         exit();
     } else {
         echo "Terjadi kesalahan saat memperbarui password.";
     }
 
-    // Menutup statement dan koneksi
     $update_stmt->close();
     $conn->close();
 }

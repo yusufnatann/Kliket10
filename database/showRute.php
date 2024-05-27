@@ -1,8 +1,6 @@
 <?php
-// Database connection
 include 'database/koneksi.php';
 
-// SQL query
 $sql = "SELECT r.ruteID, r.asal, r.tujuan, r.waktu_berangkat, r.tanggal_berangkat, 
                b.total_kursi - COALESCE(COUNT(t.pembayaran), 0) AS sisa_kapasitas
         FROM rute r
@@ -13,10 +11,10 @@ $sql = "SELECT r.ruteID, r.asal, r.tujuan, r.waktu_berangkat, r.tanggal_berangka
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // output data of each row
+    $no = 1;
     while($row = $result->fetch_assoc()) {
         echo "<tr>
-                <td>" . $row["ruteID"] . "</td>
+                <td>" . $no . "</td>
                 <td>" . $row["asal"] . "</td>
                 <td>" . $row["tujuan"] . "</td>
                 <td>" . $row["waktu_berangkat"] . "</td>
@@ -24,6 +22,7 @@ if ($result->num_rows > 0) {
                 <td>" . $row["sisa_kapasitas"] . "</td>
                 <td><button type='button' onclick='pesanTiket(" . $row["ruteID"] . ")'>Pesan</button></td>
               </tr>";
+        $no++;
     }
 } else {
     echo "<tr><td colspan='7'>Mohon maaf tiket habis</td></tr>";
