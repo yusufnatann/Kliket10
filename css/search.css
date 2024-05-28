@@ -1,0 +1,99 @@
+.cons {
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35vh;
+    background: url('img/background_pesan.png') no-repeat center center/cover;
+}
+.boxs {
+    background: rgba(235, 235, 235, 0.9);
+    margin-top: px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 500px;
+    height: 500px;
+}
+.boxs h1 {
+    margin: 0 0 20px;
+}
+.boxs label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.boxs select, .boxs input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none;
+    background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="%23333" d="M12 14.5l-6-6h12z"/></svg>') no-repeat right 10px center;
+    background-size: 12px;
+}
+
+.boxs input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.boxs input[type="radio"] {
+    display: none;
+}
+.boxs input[type="radio"] + .check-label {
+    display: inline-block;
+    padding: 8px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boxs input[type="radio"]:checked + .check-label {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group .check-label {
+    display: inline-block;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"]:checked + .check-label {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.boxs button {
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+.boxs button:hover {
+    background-color: #45a049;
+}

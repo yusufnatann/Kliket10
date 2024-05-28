@@ -1,21 +1,25 @@
 <?php
 include 'koneksi.php';
+include 'auth.php';
 
-if (!isset($_SESSION['userID'])) {
-    header("Location: ../login.html");
-    exit();
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ruteID = $_POST['ruteID'];
-    $userID = $_SESSION['userID']; 
+    $userID = $_SESSION['userID'];
+    $kode_unik_bank = rand(1000000000, 9999999999);
 
-    $sql = "INSERT INTO tiket (ruteID, userID, pembayaran) VALUES ('$ruteID', '$userID', 0)";
+    $insert_query = "INSERT INTO tiket (ruteID, userID, pembayaran, kode_unik_bank) VALUES (?, ?, 0, ?)";
+    $insert_stmt = $conn->prepare($insert_query);
+    $insert_stmt->bind_param("iis", $ruteID, $userID, $kode_unik_bank);
 
-    if ($conn->query($sql) === TRUE) {
-        echo $conn->insert_id;
+    if ($insert_stmt->execute()) {
+        $tiketID = $insert_stmt->insert_id;
+        header("Location: ../pembayaran.php?tiketID=$tiketID");
+        exit();
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $conn->error;
     }
+
+    $insert_stmt->close();
+    $conn->close();
 }
 ?>

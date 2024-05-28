@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2024 at 03:04 PM
+-- Generation Time: May 29, 2024 at 12:02 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,12 +41,13 @@ CREATE TABLE `akun` (
 INSERT INTO `akun` (`userID`, `username`, `kategoriID`, `kata_sandi`) VALUES
 (1, 'admin', 1, 'admin'),
 (2, 'anta', 2, 'anta'),
-(3, 'enggal', 3, 'haha'),
+(3, 'enggal', 3, 'enggal'),
 (12, 'a', 2, 'a'),
 (13, 'ademin', 3, 'ademin'),
 (15, 'berlian', 3, 'berlian'),
 (16, 'nepenthes', 3, 'nep'),
-(18, 'MIMA', 3, 'mima');
+(18, 'MIMA', 3, 'mima'),
+(22, 'test', 2, 'test');
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,6 @@ INSERT INTO `akun` (`userID`, `username`, `kategoriID`, `kata_sandi`) VALUES
 
 CREATE TABLE `bus` (
   `busID` int(11) NOT NULL,
-  `ruteID` int(11) DEFAULT NULL,
   `total_kursi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -64,10 +64,10 @@ CREATE TABLE `bus` (
 -- Dumping data for table `bus`
 --
 
-INSERT INTO `bus` (`busID`, `ruteID`, `total_kursi`) VALUES
-(1, 1, 40),
-(2, 2, 50),
-(3, 3, 30);
+INSERT INTO `bus` (`busID`, `total_kursi`) VALUES
+(1, 40),
+(2, 50),
+(3, 30);
 
 -- --------------------------------------------------------
 
@@ -107,12 +107,35 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`userid`, `username`, `nama`, `email`) VALUES
+(2, 'anta', 'anta', 'anta@gmail.com'),
 (3, 'enggal', 'Enggal bima sakti', 'enggalbim@gmail.com'),
 (12, 'a', 'a', 'a@a.com'),
 (13, 'ademin', 'ademin', 'ademin@ademin.com'),
 (15, 'berlian', 'Berli Anta Atrizki', 'berlian@gmail.com'),
 (16, 'nepenthes', 'nepenthes', 'nep@gmail.com'),
 (18, 'MIMA', 'MIMA', 'mima@mima.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `petugas`
+--
+
+CREATE TABLE `petugas` (
+  `userid` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `petugas`
+--
+
+INSERT INTO `petugas` (`userid`, `username`, `nama`, `email`) VALUES
+(2, 'anta', 'anta', 'anta@gmail.com'),
+(12, 'a', 'a', 'a@gmail.com'),
+(22, 'test', 'test', 'test@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -125,17 +148,26 @@ CREATE TABLE `rute` (
   `waktu_berangkat` time NOT NULL,
   `asal` varchar(255) NOT NULL,
   `tanggal_berangkat` date NOT NULL,
-  `tujuan` varchar(255) DEFAULT NULL
+  `tujuan` varchar(255) DEFAULT NULL,
+  `busID` int(11) DEFAULT NULL,
+  `harga` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rute`
 --
 
-INSERT INTO `rute` (`ruteID`, `waktu_berangkat`, `asal`, `tanggal_berangkat`, `tujuan`) VALUES
-(1, '08:00:00', 'Jakarta', '2024-06-01', 'Bandung'),
-(2, '11:00:00', 'Jakarta', '2024-06-01', 'Yogyakarta'),
-(3, '15:00:00', 'Bandung', '2024-06-02', 'Surabaya');
+INSERT INTO `rute` (`ruteID`, `waktu_berangkat`, `asal`, `tanggal_berangkat`, `tujuan`, `busID`, `harga`) VALUES
+(1, '08:00:00', 'Jakarta', '2024-06-01', 'Bandung', 1, 75000),
+(2, '11:00:00', 'Jakarta', '2024-06-01', 'Yogyakarta', 2, 240000),
+(3, '15:00:00', 'Bandung', '2024-06-02', 'Surabaya', 3, 300000),
+(4, '11:00:00', 'Jakarta', '2024-06-01', 'Bandung', 2, 300000),
+(5, '11:00:00', 'Jakarta', '2024-06-02', 'Bandung', 2, 300000),
+(6, '15:00:00', 'Jakarta', '2024-06-01', 'Bandung', 2, 300000),
+(7, '08:00:00', 'Jakarta', '2024-06-02', 'Bandung', 2, 300000),
+(8, '11:00:00', 'Jakarta', '2024-06-02', 'Bandung', 2, 300000),
+(9, '15:00:00', 'Jakarta', '2024-06-02', 'Bandung', 2, 300000),
+(10, '08:00:00', 'Jakarta', '2024-06-03', 'Bandung', 2, 300000);
 
 -- --------------------------------------------------------
 
@@ -152,6 +184,27 @@ CREATE TABLE `staff` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `terminal`
+--
+
+CREATE TABLE `terminal` (
+  `nama` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `terminal`
+--
+
+INSERT INTO `terminal` (`nama`) VALUES
+('Yogyakarta'),
+('Bandung'),
+('Jakarta'),
+('Bandar Lampung'),
+('Malang');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tiket`
 --
 
@@ -160,35 +213,43 @@ CREATE TABLE `tiket` (
   `ruteID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `pembayaran` int(11) DEFAULT NULL,
-  `status_kehadiran` varchar(20) DEFAULT 'Belum Ditentukan'
+  `status_kehadiran` varchar(20) DEFAULT 'Belum Ditentukan',
+  `bukti_pembayaran` varchar(255) DEFAULT NULL,
+  `kode_unik_bank` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tiket`
 --
 
-INSERT INTO `tiket` (`tiketID`, `ruteID`, `userID`, `pembayaran`, `status_kehadiran`) VALUES
-(1, 1, 12, 1, 'Hadir'),
-(2, 1, 12, 1, 'Tidak Hadir'),
-(3, 1, 13, 0, 'Belum Ditentukan'),
-(4, 2, 15, 1, 'Hadir'),
-(5, 2, 16, 0, 'Belum Ditentukan'),
-(20, 1, 3, 2, 'Belum Ditentukan'),
-(21, 1, 3, 0, 'Belum Ditentukan'),
-(22, 1, 3, 0, 'Belum Ditentukan'),
-(23, 1, 3, 2, 'Belum Ditentukan'),
-(26, 2, 3, 2, 'Belum Ditentukan'),
-(31, 2, 15, 1, 'Belum Ditentukan'),
-(33, 2, 15, 1, 'Belum Ditentukan'),
-(34, 2, 15, 2, 'Belum Ditentukan'),
-(35, 1, 15, 1, 'Belum Ditentukan'),
-(36, 2, 15, 1, 'Belum Ditentukan'),
-(37, 2, 15, 0, 'Belum Ditentukan'),
-(38, 1, 3, 0, 'Belum Ditentukan'),
-(39, 2, 2, 0, 'Belum Ditentukan'),
-(40, 2, 3, 1, 'Hadir'),
-(41, 2, 3, 1, 'Tidak Hadir'),
-(42, 2, 3, 0, 'Belum Ditentukan');
+INSERT INTO `tiket` (`tiketID`, `ruteID`, `userID`, `pembayaran`, `status_kehadiran`, `bukti_pembayaran`, `kode_unik_bank`) VALUES
+(1, 1, 12, 1, 'Hadir', NULL, '8668258480'),
+(2, 1, 12, 1, 'Tidak Hadir', NULL, '8568258480'),
+(3, 1, 13, 0, 'Belum Ditentukan', NULL, '5668258480'),
+(4, 2, 15, 1, 'Hadir', NULL, '3506641723'),
+(5, 2, 16, 0, 'Belum Ditentukan', NULL, '2000771329'),
+(20, 1, 3, 2, 'Belum Ditentukan', NULL, '9807495154'),
+(21, 1, 3, 0, 'Belum Ditentukan', NULL, '2381597705'),
+(22, 1, 3, 0, 'Belum Ditentukan', NULL, '4299827265'),
+(23, 1, 3, 2, 'Belum Ditentukan', NULL, '5094065676'),
+(26, 2, 3, 2, 'Belum Ditentukan', NULL, '1368834801'),
+(31, 2, 15, 1, 'Belum Ditentukan', NULL, '8433572790'),
+(33, 2, 15, 1, 'Belum Ditentukan', NULL, '8719015271'),
+(34, 2, 15, 2, 'Belum Ditentukan', NULL, '4323939295'),
+(35, 1, 15, 1, 'Belum Ditentukan', NULL, '8798074951'),
+(36, 2, 15, 1, 'Belum Ditentukan', NULL, '8192074951'),
+(37, 2, 15, 2, 'Belum Ditentukan', NULL, '5598055955'),
+(38, 1, 3, 0, 'Belum Ditentukan', NULL, '6328022931'),
+(39, 2, 2, 0, 'Belum Ditentukan', NULL, '7980749519'),
+(40, 2, 3, 1, 'Hadir', NULL, '1244194168'),
+(41, 2, 3, 1, 'Tidak Hadir', NULL, '9807495154'),
+(42, 2, 3, 0, 'Belum Ditentukan', NULL, '7778798074'),
+(43, 1, 15, 1, 'Belum Ditentukan', '../buktiimage_2024-05-29_043701273.png', '6668074666'),
+(44, 10, 15, 1, 'Belum Ditentukan', '../bukti/bukti_44.png', '8888074888'),
+(45, 10, 15, 1, 'Belum Ditentukan', '../bukti/bukti_45.png', '9998074999'),
+(46, 10, 15, 1, 'Belum Ditentukan', '../buktiimage_2024-05-29_043819482.png', '1118074111'),
+(48, 10, 15, 0, 'Belum Ditentukan', NULL, '2748392255'),
+(49, 10, 15, 0, 'Belum Ditentukan', NULL, '7508786792');
 
 --
 -- Indexes for dumped tables
@@ -205,8 +266,7 @@ ALTER TABLE `akun`
 -- Indexes for table `bus`
 --
 ALTER TABLE `bus`
-  ADD PRIMARY KEY (`busID`),
-  ADD KEY `ruteID` (`ruteID`);
+  ADD PRIMARY KEY (`busID`);
 
 --
 -- Indexes for table `kategori`
@@ -221,10 +281,17 @@ ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`userid`);
 
 --
+-- Indexes for table `petugas`
+--
+ALTER TABLE `petugas`
+  ADD PRIMARY KEY (`userid`);
+
+--
 -- Indexes for table `rute`
 --
 ALTER TABLE `rute`
-  ADD PRIMARY KEY (`ruteID`);
+  ADD PRIMARY KEY (`ruteID`),
+  ADD KEY `fk_rute_bus` (`busID`);
 
 --
 -- Indexes for table `staff`
@@ -248,13 +315,13 @@ ALTER TABLE `tiket`
 -- AUTO_INCREMENT for table `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `rute`
 --
 ALTER TABLE `rute`
-  MODIFY `ruteID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ruteID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -266,7 +333,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `tiketID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `tiketID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables
@@ -279,16 +346,22 @@ ALTER TABLE `akun`
   ADD CONSTRAINT `akun_ibfk_1` FOREIGN KEY (`kategoriID`) REFERENCES `kategori` (`kategoriID`);
 
 --
--- Constraints for table `bus`
---
-ALTER TABLE `bus`
-  ADD CONSTRAINT `bus_ibfk_1` FOREIGN KEY (`ruteID`) REFERENCES `rute` (`ruteID`);
-
---
 -- Constraints for table `pengguna`
 --
 ALTER TABLE `pengguna`
   ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `akun` (`userID`);
+
+--
+-- Constraints for table `petugas`
+--
+ALTER TABLE `petugas`
+  ADD CONSTRAINT `petugas_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `akun` (`userID`);
+
+--
+-- Constraints for table `rute`
+--
+ALTER TABLE `rute`
+  ADD CONSTRAINT `fk_rute_bus` FOREIGN KEY (`busID`) REFERENCES `bus` (`busID`);
 
 --
 -- Constraints for table `staff`

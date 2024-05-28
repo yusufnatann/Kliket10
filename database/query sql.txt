@@ -7,3 +7,11 @@ INSERT INTO rute_akhir (ruteid, tujuan) VALUES
 (1,'Kota A'),
 (2,'Kota B'),
 (3,'Kota C')
+
+INSERT INTO `rute`(`waktu_berangkat`, `asal`, `tanggal_berangkat`, `tujuan`, `busID`, `harga`) VALUES 
+('11:00:00','Jakarta','2024-06-02','Bandung','2','300000'),
+('15:00:00','Jakarta','2024-06-01','Bandung','2','300000'),
+('08:00:00','Jakarta','2024-06-02','Bandung','2','300000'),
+('11:00:00','Jakarta','2024-06-02','Bandung','2','300000'),
+('15:00:00','Jakarta','2024-06-02','Bandung','2','300000'),
+('08:00:00','Jakarta','2024-06-03','Bandung','2','300000')

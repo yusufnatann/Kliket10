@@ -1,6 +1,18 @@
 <?php
 include 'database/koneksi.php';
 include 'database/auth.php';
+
+$query = "SELECT nama FROM terminal ORDER BY nama ASC;";
+$result = $conn->query($query);
+
+$terminals = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $terminals[] = $row;
+    }
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -11,45 +23,14 @@ include 'database/auth.php';
     <title>Kliket - Home</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tabel.css">
+    <link rel="stylesheet" href="css/search.css">
+    <script src="https://kit.fontawesome.com/f1396b40aa.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Navbar -->
-    <div class="nav">
-        <label>
-            <input type="checkbox" class="hiddens">
-            <div class="toggle">
-                <span class="top_line common"></span>
-                <span class="middle_line common"></span>
-                <span class="bottom_line common"></span>
-            </div>
-            
-            <div class="bartiga">
-                <h1 class="title">‎ </h1>
-                <ul class="navmenu">
-                    <li><a href="profile.php"><img src="img/user_icon.png" class="icon">Akun</a></li>
-                    <li><a href="pesanan.php"><img src="img/user_icon.png" class="icon">Pesanan Saya</a></li>
-                    <li><a href="riwayat.php"><img src="img/user_icon.png" class="icon">Riwayat Tiket</a></li>
-                    <li><a href="faq.php"><img src="img/user_icon.png" class="icon">FAQ</a></li>
-                    <?php if (($_SESSION['kategoriID']) === 1): ?>
-                    <li><a href="admin/admutama.html"><img src="img/user_icon.png" class="icon">Dashboard Admin</a></li>
-                    <?php endif; ?>
-                    <?php if (($_SESSION['kategoriID']) === 1 || ($_SESSION['kategoriID']) === 2): ?>
-                    <li><a href="indexPetugas.php"><img src="img/user_icon.png" class="icon">Petugas</a></li>
-                    <?php endif; ?>
-                    <li><a href="database/logout.php"><img src="img/user_icon.png" class="icon">Keluar</a></li>
-                </ul>
-            </div>
-        </label>
-        
-        <div class="cont">
-            <nav>
-                <a href="index.php"><img src="img/Kliket-logo-blue.png" class="logo"></a>
-                <ul>
-                    <li><a href="profile.php"><img src="img/user_icon.png" class="logo2"><?php echo htmlspecialchars($nama); ?></a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <?php
+    include 'navbar.php';
+    ?>
 
     <!-- Pesan Tiket -->
 
@@ -60,25 +41,56 @@ include 'database/auth.php';
                 <h1 class="pesan-title">Cari Tiket</h1>
                 <p class="pesan-sub">Atur jadwal keberangkatan anda!</p>
             </div>
-            <!-- Tabel disini -->
-            <div class="table-container">
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Terminal Asal</th>
-                            <th>Terminal Tujuan</th>
-                            <th>Waktu Berangkat</th>
-                            <th>Tanggal Berangkat</th>
-                            <th>Sisa Kapasitas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php include 'database/showRute.php';?>
-                    </tbody>
-                </table>
+                <!-- Search disini -->
+                <form action="list.php" method="POST" onsubmit="return validateForm()">
+                    <label for="asal">Asal:</label>
+                    <select id="asal" name="asal" required>
+                        <option value="">Pilih Asal</option>
+                        <?php foreach ($terminals as $terminal): ?>
+                            <option value="<?php echo htmlspecialchars($terminal['nama']); ?>"><?php echo htmlspecialchars($terminal['nama']); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    
+                    <label for="tujuan">Tujuan:</label>
+                    <select id="tujuan" name="tujuan" required>
+                        <option value="">Pilih Tujuan</option>
+                        <?php foreach ($terminals as $terminal): ?>
+                            <option value="<?php echo htmlspecialchars($terminal['nama']); ?>"><?php echo htmlspecialchars($terminal['nama']); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    
+                    <label for="tanggal_berangkat">Tanggal Berangkat:</label>
+                    <input type="date" id="tanggal_berangkat" name="tanggal_berangkat" required>
+                    
+                    <label for="waktu_berangkat">Waktu Berangkat:</label><br>
+                    <div class="radio-group">
+                        <input type="radio" id="jam_8" name="waktu_berangkat" value="08:00">
+                        <label class="check-label" for="jam_8">Jam 08:00</label>
+
+                        <input type="radio" id="jam_11" name="waktu_berangkat" value="11:00">
+                        <label class="check-label" for="jam_11">Jam 11:00</label>
+
+                        <input type="radio" id="jam_15" name="waktu_berangkat" value="15:00">
+                        <label class="check-label" for="jam_15">Jam 15:00</label>
+                    </div>
+                    
+                    <button type="submit">Cari Tiket</button>
+                </form>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    function validateForm() {
+        const tanggalBerangkat = document.getElementById('tanggal_berangkat').value;
+        const today = new Date().toISOString().split('T')[0];
+        
+        if (tanggalBerangkat < today) {
+            alert("Tanggal berangkat tidak bisa kemarin.");
+            return false;
+        }
+        return true;
+    }
+</script>
