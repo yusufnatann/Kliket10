@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.nav {
+    width: 100%;
+    height: 55px;
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    margin-left: 70px;
+    margin-top: 22px;
+    width: 80px;
+    flex-grow: 1;
+    margin-right: auto;
+}
+
+.logo:hover {
+    transition: 0.1s ease;
+    opacity: 0.3;
+}
+
+.text {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    margin: 10px;
+    font-size: 26px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.text1 {
+    position: absolute;
+    top: 95px;
+    left: 60px;
+    margin: 10px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.text2 {
+    position: absolute;
+    top: 75px;
+    left: 60px;
+    margin: 10px;
+    font-size: 11px;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+}
+
+.text3 {
+    position: absolute;
+    top: 95px;
+    left: 350px;
+    margin: 10px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.text4 {
+    position: absolute;
+    top: 75px;
+    left: 350px;
+    margin: 10px;
+    font-size: 11px;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+}
+
+.navmenu {
+    list-style: none;
+    margin-top: 40px;
+    padding-left: 70px;
+}
+
+.navmenu li {
+    margin: 20px 0;
+}
+
+.navmenu li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #000000;
+}
+
+.navmenu li a:hover {
+    text-decoration: underline;
+}
+
+.navmenu img.icon {
+    width: 15px;
+    margin-right: 10px;
+}
+
+.bartiga {
+    position: absolute;
+    top: -1000px;
+    left: 0;
+    width: 210px;
+    background-color: #ffffff;
+    z-index: 5;
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.bartiga h1 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.bartiga ul {
+    padding-left: 0;
+}
+
+.hiddens {
+    display: none;
+}
+
+.hiddens:checked~.bartiga {
+    top: 0;
+}
+
+.hiddens:checked~.toggle .top_line {
+    transform: rotate(-45deg);
+    top: 8px;
+}
+
+.hiddens:checked~.toggle .middle_line {
+    opacity: 0;
+}
+
+.hiddens:checked~.toggle .bottom_line {
+    transform: rotate(45deg);
+    top: -8px;
+}
+
+.toggle {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 6;
+    cursor: pointer;
+}
+
+.toggle .common {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    margin-top: 5px;
+    transition: 0.4s;
+}
+
+.hiddens:checked~.bartiga {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hiddens:checked~.bartiga .title {
+    margin-top: 20px;
+}
+
+.cont {
+    width: 100%;
+    height: 55px;
+    position: absolute;
+    top: 0;
+    background-color: #ffffff;
+}
+
+.logo2 {
+    width: 18px;
+    height: 18px;
+    margin-right: 20px;
+}
+
+.main-content {
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-form input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-form button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.search-form img {
+    width: 20px;
+    height: 20px;
+}
+
+.addtiket {
+    margin-left: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.order-table th, .order-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.order-table th {
+    background-color: #f2f2f2;
+}
+
+.order-table td.status {
+    font-weight: bold;
+}
+
+.status.free {
+    color: green;
+}
+
+.status.busy {
+    color: red;
+}
+
+.status.working {
+    color: blue;
+}
+
+.status.vacation {
+    color: orange;
+}
+
+.actions-column {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.edit-icon, .delete-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

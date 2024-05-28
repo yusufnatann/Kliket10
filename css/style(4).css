@@ -1,0 +1,347 @@
+/* Existing CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.nav {
+    width: 100%;
+    height: 55px;
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+}
+
+.nav nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    margin-left: 70px;
+    margin-top: 22px;
+    width: 80px;
+    flex-grow: 1;
+    margin-right: auto;
+}
+
+.logo:hover {
+    transition: 0.1s ease;
+    opacity: 0.3;
+}
+
+.text {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    margin: 10px;
+    font-size: 26px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0px 15px;
+    margin-top: 12px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #0D6EFD;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    transition: 1s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.nav-buttons {
+    margin-left: auto; /* Menggeser tombol ke kanan */
+    display: flex;
+    align-items: center;
+}
+
+.logo2 {
+    margin-bottom: -10px;
+    width: 33px;
+}
+
+.bartiga {
+    height: 100%;
+    width: 180px;
+    position: absolute;
+    background-color: white;
+    transition: 0.5s ease;
+    transform: translateX(-180px);
+}
+
+.title {
+    color: white;
+    font-weight: 800;
+    text-align: right;
+    padding: 10px 0;
+    padding-right: 30px;
+    pointer-events: none;
+}
+
+.navmenu li {
+    list-style: none;
+}
+
+.navmenu li a {
+    color: black;
+    font-weight: 5px;
+    padding: 5px 0;
+    display: block;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: 0.2s ease-out;
+}
+
+.navmenu li:hover a {
+    transition: 1s;
+    background-color: #0D6EFD;
+}
+.nav-icons {
+    margin-left: auto; /* Pindahkan ikon pengguna ke kanan */
+}
+.navmenu li a .icon {
+    width: 13%;
+    text-align: center;
+}
+
+.hiddens {
+    display: none;
+    visibility: hidden;
+}
+
+.toggle {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    left: 15px;
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.toggle .common {
+    position: absolute;
+    height: 2px;
+    width: 20px;
+    background-color: black;
+    border-radius: 50px;
+    transition: 0.3 ease;
+}
+
+.toggle .top_line {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.toggle .middle_line {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.toggle .bottom_line {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input:checked ~ .toggle .top_line {
+    top: 50%;
+    left: 2px;
+    right: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+}
+
+input:checked ~ .toggle .middle_line {
+    top: 14px;
+    left: 2px;
+    right: 14px;
+    width: 25px;
+    transform: rotate(-45deg);
+}
+
+input:checked ~ .toggle .bottom_line {
+    opacity: 0;
+}
+
+input:checked ~ .bartiga {
+    transform: translateX(0);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.main-content {
+    width: 100%;
+    margin: 60px auto;
+    text-align: center;
+    
+}
+
+.main-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-form,
+.add-route-button {
+    margin-left: auto; /* Pindahkan form pencarian dan tombol ke kanan */
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 105px; /* Sesuaikan dengan jarak dari atas yang diinginkan */
+    right: 130px; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
+    z-index: 999;
+}
+
+.addtiket{
+    margin-left: auto; /* Pindahkan form pencarian dan tombol ke kanan */
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 100px; /* Sesuaikan dengan jarak dari atas yang diinginkan */
+    right: 20px; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
+    z-index: 999;
+    background-color: #5B6AD0; /* Warna latar belakang sesuai dengan yang diinginkan */
+    color: white; /* Warna teks putih agar kontras dengan latar belakang */
+    padding: 7px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar input {
+    width: 70%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-input {
+    padding-left: 30px; /* untuk memberikan ruang di sebelah kiri input untuk gambar */
+    /* background-image: url('img/search.png'); ganti 'img/search_icon.png' dengan lokasi dan nama file gambar Anda */
+    background-repeat: no-repeat;
+    background-position: 10px center; /* posisi gambar di tengah vertikal dan 10px dari kiri */
+    position: absolute;
+}
+
+.search-bar button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0D6EFD;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.search-bar button img {
+    margin-right: 8px; /* Tambahkan jarak antara ikon dan teks */
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+.table-container {
+    overflow-x: auto;
+    width: 100%; 
+    margin-top: 35px;
+    margin-left: 0; /* Menghapus margin kiri */
+    margin-right: 0; /* Menghapus margin kanan */
+}
+
+.order-table {
+    width: 100%; /* Menjadikan tabel lebar penuh */
+    border-collapse: collapse;
+    border-spacing: 0 10px;
+    font-size: 18px;
+    text-align: left;
+    margin: 0; /* Menghilangkan margin */
+    padding: 0; /* Menghilangkan padding */
+}
+
+.order-table th, .order-table td {
+    padding: 12px 15px;
+    border: none;
+}
+
+.order-table th {
+    background-color: #f4f4f4;
+}
+
+.order-table th.actions-column, .order-table td.actions-column {
+    text-align: right; /* Align actions column to the right */
+}
+
+.order-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.edit-icon, .delete-icon {
+    text-decoration: none;
+    margin: 0 5px;
+    color: #000;
+}
+
+.edit-icon:hover, .delete-icon:hover {
+    color: #0D6EFD;
+}
+
+/* New CSS for aligning actions column */
+.order-table th.actions-column {
+    text-align: right;
+    padding-right: 70px; /* Adjust this value to your preference */
+}
+
+.order-table td.actions-column {
+    text-align: right;
+    padding-right: 70px; /* Adjust this value to your preference */
+}
