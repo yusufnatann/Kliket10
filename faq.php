@@ -1,15 +1,6 @@
 <?php
 include 'database/koneksi.php';
-
-if (!isset($_SESSION['username'])) {
-    header("Location: login.html");
-    exit();
-}
-
-$username = $_SESSION['username'];
-$sql = "SELECT * FROM akun WHERE username='$username'";
-$result = $conn->query($sql);
-$user = $result->fetch_assoc();
+include 'database/auth.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +26,9 @@ $user = $result->fetch_assoc();
             <div class="bartiga">
                 <h1 class="title">‎ </h1>
                 <ul class="navmenu">
-                    <li><a href="#"><img src="img/user_icon.png" class="icon">Akun</a></li>
+                    <li><a href="profile.php"><img src="img/user_icon.png" class="icon">Akun</a></li>
                     <li><a href="pesanan.php"><img src="img/user_icon.png" class="icon">Pesanan Saya</a></li>
-                    <li><a href="#"><img src="img/user_icon.png" class="icon">Riwayat Tiket</a></li>
+                    <li><a href="riwayat.php"><img src="img/user_icon.png" class="icon">Riwayat Tiket</a></li>
                     <li><a href="faq.php"><img src="img/user_icon.png" class="icon">FAQ</a></li>
                     <li><a href="database/logout.php"><img src="img/user_icon.png" class="icon">Keluar</a></li>
                 </ul>
@@ -48,7 +39,7 @@ $user = $result->fetch_assoc();
             <nav>
                 <a href="index.php"><img src="img/Kliket-logo-blue.png" class="logo"></a>
                 <ul>
-                    <li><a href=""><img src="img/user_icon.png" class="logo2"><?php echo $user['username']; ?></a></li>
+                    <li><a href=""><img src="img/user_icon.png" class="logo2"><?php echo htmlspecialchars($nama); ?></a></li>
                 </ul>
             </nav>
         </div>
