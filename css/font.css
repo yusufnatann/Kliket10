@@ -1,0 +1,11 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav, .box, .conta, .login, .log-form, .input-box, .input-box-pass, .btn, .register-link {
+    font-family: 'Poppins', sans-serif;
+}

@@ -2,7 +2,7 @@
 include 'database/koneksi.php';
 include 'database/auth.php';
 
-$tiketQuery = "SELECT t.tiketID, t.pembayaran, r.asal, r.tujuan, r.waktu_berangkat, r.tanggal_berangkat 
+$tiketQuery = "SELECT t.tiketID, t.pembayaran, t.valid, r.asal, r.tujuan, r.waktu_berangkat, r.tanggal_berangkat 
                 FROM tiket t 
                 JOIN rute r ON t.ruteID = r.ruteID 
                 WHERE t.userID = ?";
@@ -18,48 +18,18 @@ $tiketResult = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Tiket</title>
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tabel.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/f1396b40aa.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Navbar -->
-    <div class="nav">
-        <label>
-            <input type="checkbox" class="hiddens">
-            <div class="toggle">
-                <span class="top_line common"></span>
-                <span class="middle_line common"></span>
-                <span class="bottom_line common"></span>
-            </div>
-            
-            <div class="bartiga">
-                <h1 class="title">‎ </h1>
-                <ul class="navmenu">
-                    <li><a href="profile.php"><img src="img/user_icon.png" class="icon">Akun</a></li>
-                    <li><a href="pesanan.php"><i class="fa-solid fa-receipt icon"></i>Pesanan Saya</a></li>
-                    <li><a href="riwayat.php"><i class="fa-solid fa-clock-rotate-left icon"></i>Riwayat Tiket</a></li>
-                    <li><a href="faq.php"><img src="img/faq.png" class="icon">FAQ</a></li>
-                    <?php if (($_SESSION['kategoriID']) === 1): ?>
-                    <li><a href="admin/admutama.php"><img src="" class="icon">Dashboard Admin</a></li>
-                    <?php endif; ?>
-                    <?php if (($_SESSION['kategoriID']) === 1 || ($_SESSION['kategoriID']) === 2): ?>
-                    <li><a href="indexPetugas.php"><img src="" class="icon">Petugas</a></li>
-                    <?php endif; ?>
-                    <li><a href="database/logout.php"><img src="img/keluar.png" class="icon">Keluar</a></li>
-                </ul>
-            </div>
-        </label>
-        
-        <div class="cont">
-            <nav>
-                <a href="index.php"><img src="img/Kliket-logo-blue.png" class="logo"></a>
-                <ul>
-                    <li><a href="profile.php"><img src="img/user_icon.png" class="logo2"><?php echo htmlspecialchars($nama); ?></a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <?php
+    include 'navbar.php';
+    ?>
 
     <div class="cons">
     <img src="img/background_pesan.png" class="bg_pesan">
@@ -78,7 +48,8 @@ $tiketResult = $stmt->get_result();
                         <th>Terminal Tujuan</th>
                         <th>Waktu Berangkat</th>
                         <th>Tanggal Berangkat</th>
-                        <th>Status</th>
+                        <th>Status Pembayaran</th>
+                        <th>Status Validasi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +57,7 @@ $tiketResult = $stmt->get_result();
                     if ($tiketResult->num_rows > 0) {
                         $no = 1;
                         while ($row = $tiketResult->fetch_assoc()) {
-                            echo "<tr>";
+                            echo "<tr class='" . ($row['valid'] == 1 ? "valid-ticket" : "") . "' data-tiketid='{$row['tiketID']}'>";
                             echo "<td>" . $no . "</td>";
                             echo "<td>" . $row['asal'] . "</td>";
                             echo "<td>" . $row['tujuan'] . "</td>";
@@ -101,11 +72,18 @@ $tiketResult = $stmt->get_result();
                                 echo "Belum Dibayar";
                             }
                             echo "</td>";
+                            echo "<td>";
+                            if ($row['valid'] == 1) {
+                                echo "Valid";
+                            } else {
+                                echo "Belum Valid";
+                            }
+                            echo "</td>";
                             echo "</tr>";
                             $no++;
                         }
                     } else {
-                        echo "<tr><td colspan='6'>Tidak ada riwayat tiket.</td></tr>";
+                        echo "<tr><td colspan='7'>Tidak ada riwayat tiket.</td></tr>";
                     }
                     $stmt->close();
                     $conn->close();
@@ -114,6 +92,46 @@ $tiketResult = $stmt->get_result();
             </table>
         </div>
     </div>
+
+    <div class="modal fade" id="ticketDetailsModal" tabindex="-1" aria-labelledby="ticketDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ticketDetailsModalLabel">Detail Tiket</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- showdetail.php -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+
+<script>
+    function showTicketDetails(tiketID) {
+        $.ajax({
+            url: 'database/showdetail.php',
+            type: 'GET',
+            data: { tiketID: tiketID },
+            success: function(data) {
+                $('#ticketDetailsModal .modal-body').html(data);
+                $('#ticketDetailsModal').modal('show');
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        $('.valid-ticket').click(function() {
+            var tiketID = $(this).data('tiketid');
+            showTicketDetails(tiketID);
+        });
+    });
+</script>

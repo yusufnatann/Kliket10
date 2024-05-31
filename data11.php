@@ -1,6 +1,8 @@
 <?php
 include 'database/koneksi.php';
 include 'database/authPetugas.php';
+
+$tanggal = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +24,12 @@ include 'database/authPetugas.php';
     </div>
     
     <h1>Daftar Pesanan</h1>
+    <form method="GET" action="">
+        <label for="tanggal">Pilih Tanggal:</label>
+        <input type="date" id="tanggal" name="tanggal" value="<?php echo $tanggal; ?>">
+        <button type="submit">Tampilkan</button>
+    </form>
+    
     <table class="order-table">
         <thead>
             <tr>
@@ -35,11 +43,13 @@ include 'database/authPetugas.php';
         </thead>
         <tbody>
             <?php
+            $tanggalSQL = date('Y-m-d', strtotime($tanggal));
+
             $sql = "SELECT pengguna.nama, rute.asal, rute.tujuan, tiket.tiketID, tiket.status_kehadiran
-                    FROM tiket 
-                    JOIN pengguna ON tiket.userID = pengguna.userID 
-                    JOIN rute ON tiket.ruteID = rute.ruteID 
-                    WHERE rute.waktu_berangkat = '11:00' AND tiket.pembayaran = 1";
+            FROM tiket 
+            JOIN pengguna ON tiket.userID = pengguna.userID 
+            JOIN rute ON tiket.ruteID = rute.ruteID
+            WHERE DATE(rute.tanggal_berangkat) = '$tanggalSQL' AND tiket.pembayaran = 1 AND rute.waktu_berangkat = '11:00' AND tiket.valid = 1";
 
             $result = $conn->query($sql);
 
