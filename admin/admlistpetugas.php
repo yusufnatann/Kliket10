@@ -17,9 +17,9 @@
     <div class="main-content">
         <nav>
             <div class="text">Data Petugas</div>
-            <form class="search-form" action="#">
+            <form class="search-form" method="GET" action="admlistpetugas.php">
                 <div class="search-box">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" name="search" class="form-control" placeholder="Search">
                     <i class="fas fa-search"></i>
                 </div>
             </form>
@@ -37,11 +37,17 @@
                 </thead>
                 <tbody>
                     <?php
+                    $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+                    
                     $sql = "SELECT akun.userID,petugas.nama, petugas.email, akun.kata_sandi
                             FROM petugas
                             JOIN akun ON petugas.userid = akun.userid
                             WHERE akun.kategoriID = 2";
-
+                    
+                    if (!empty($searchQuery)) {
+                        $sql .= " AND (petugas.nama LIKE '%$searchQuery%')";
+                    }
+                    
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
