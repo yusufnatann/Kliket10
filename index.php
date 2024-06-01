@@ -24,6 +24,7 @@ $conn->close();
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tabel.css">
     <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/font.css">
 </head>
 <body>
     <!-- Navbar -->

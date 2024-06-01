@@ -1,0 +1,53 @@
+.cont li a:hover {
+    background-color: #3031334d;
+}
+
+.cont {
+    padding-top: 10px;
+    padding-right: 70px;
+    padding-left: 70px;
+    box-sizing: border-box;
+}
+
+.cont li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+}
+
+.toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    margin: 10px 30px;
+}
+
+.navmenu{
+    padding-left: 40px;
+    top: 50px;
+    padding-top: 40px;
+    font-family: "montserrat", poppins;
+    font-size: 13px;
+    color: rgb(53, 53, 53);
+    width: 250px;
+}
+
+.navmenu li a{
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.navmenu li a .icon {
+    margin-right: 16px; 
+    width: 20px;
+}
+
+.bartiga {
+    width: 250px;
+}
