@@ -29,12 +29,16 @@
                     </a>
                 </div>
                 <div class="item">
+                    <a href="">
                     <img src="../img/datapenjualan.png" alt="Data Penjualan">
                     <h3>Data Penjualan</h3>
+                    </a>
                 </div>
                 <div class="item">
+                    <a href="admvalidasi.php">
                     <img src="../img/validasipembayaran.png" alt="Validasi Pembayaran">
                     <h3>Validasi Pembayaran</h3>
+                    </a>
                 </div>
             </div>
         </div>

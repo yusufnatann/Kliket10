@@ -12,7 +12,7 @@
     include 'adminnavbar.php';
     ?>
 
-    <!-- Main Content -->
+    <!-- Tabel tiket -->
     <div class="main-content">
         <nav>
             <div class="text">Kelola Tiket</div>
@@ -28,8 +28,12 @@
             <table class="order-table">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Terminal Asal</th>
                         <th>Terminal Tujuan</th>
+                        <th>Tanggal Berangkat</th>
+                        <th>Waktu Berangkat</th>
+                        <th>Bus</th>
                         <th>Harga</th>
                         <th class="actions-column">Aksi</th>
                     </tr>

@@ -2,13 +2,6 @@
     include '../database/koneksi.php';
     include '../database/authAdmin.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
     <!-- Navbar -->
     <div class="nav">
@@ -24,7 +17,7 @@
                 <h1 class="title">‎ </h1>
                 <ul class="navmenu">
                     <li><a href="admpetugas.php"><img src="../img/petugas.png" class="icon">Petugas Terminal</a></li>
-                    <li><a href="#"><img src="../img/kelolatiket.png" class="icon">Kelola Tiket</a></li>
+                    <li><a href="admtiket.php"><img src="../img/kelolatiket.png" class="icon">Kelola Tiket</a></li>
                     <li><a href="#"><img src="../img/datapenjualan.png" class="icon">Data Penjualan</a></li>
                     <li><a href="#"><img src="../img/validasipembayaran.png" class="icon">Validasi Pembayaran</a></li>
                     <li><a href="../database/logout.php"><img src="../img/keluar.png" class="icon">Keluar</a></li>
@@ -43,4 +36,3 @@
     </div>
 
 </body>
-</html>
