@@ -61,7 +61,7 @@ include 'database/auth.php';
                                     <td>{$row['waktu_berangkat']}</td>
                                     <td>{$row['tanggal_berangkat']}</td>
                                     <td><a href='pembayaran.php?tiketID={$row['tiketID']}'>Bayar</a></td>
-                                    <td><a href='database/cancel.php?tiketID={$row['tiketID']}'>Batal</a></td>
+                                    <td><a href='javascript:void(0);' onclick='confirmCancellation({$row['tiketID']})'>Batal</a></td>
                                   </tr>";
                             $no++;
                         }
@@ -76,3 +76,12 @@ include 'database/auth.php';
 </div>
 </body>
 </html>
+
+<script>
+    function confirmCancellation(tiketID) {
+        var confirmAction = confirm("Apakah Anda yakin ingin membatalkan tiket ini?");
+        if (confirmAction) {
+            window.location.href = 'database/cancel.php?tiketID=' + tiketID;
+        }
+    }
+</script>

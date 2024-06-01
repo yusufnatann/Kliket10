@@ -26,11 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($storedKategori === 1) {
                     mysqli_free_result($result);
                     mysqli_close($conn);
-                    header("Location: ../index.php");
+                    header("Location: ../admin/admutama.php");
                 } elseif ($storedKategori === 2) {
                     mysqli_free_result($result);
                     mysqli_close($conn);
-                    header("Location: ../index.php");
+                    header("Location: ../indexpetugas.php");
                 } elseif ($storedKategori === 3) {
                     mysqli_free_result($result);
                     mysqli_close($conn);

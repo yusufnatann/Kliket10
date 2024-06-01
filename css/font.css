@@ -1,10 +1,7 @@
-/* style.css */
-
 body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Apply specific styles if needed */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
 }
@@ -12,5 +9,3 @@ h1, h2, h3, h4, h5, h6 {
 .nav, .box, .conta, .login, .log-form, .input-box, .input-box-pass, .btn, .register-link {
     font-family: 'Poppins', sans-serif;
 }
-
-/* You can add additional CSS styles for other elements as needed */

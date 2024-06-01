@@ -24,7 +24,6 @@ $conn->close();
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tabel.css">
     <link rel="stylesheet" href="css/search.css">
-    <script src="https://kit.fontawesome.com/f1396b40aa.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Navbar -->
