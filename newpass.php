@@ -31,16 +31,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubah Password</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
 </head>
 <body>
-    <h1>Ubah Password</h1>
-    <form method="POST" action="">
-        <div>
-            <label for="new_password">Password Baru:</label>
-            <input type="password" id="new_password" name="new_password" required>
+    <div class="box">
+        <div class="conta">
+            <img src="img/background_login.png" class="bg_log">
+            <div class="login">
+                <form class="log-form" action="" method="POST">
+                    <h1 class="login-title">Ubah Password</h1>
+                    <div class="input-box-pass">
+                        <input type="password" class="inp-b" id="new_password" name="new_password" placeholder="New Password" required>
+                        <img src="img/eyeclose.png" id="eyeicon">
+                    </div>
+                    <button type="submit" class="btn">Ubah Password</button>
+                </form>
+            </div>
         </div>
-        <button type="submit">Ubah Password</button>
-    </form>
+    </div>
+
+    <!-- Script for hide/show password -->
+    <script>
+        let eyeicon = document.getElementById("eyeicon");
+        let password = document.getElementById("new_password");
+
+        eyeicon.onclick = function(){
+            if(password.type == "password"){
+                password.type = "text";
+                eyeicon.src = "img/eyeopen.png";
+            }
+            else {
+                password.type = "password";
+                eyeicon.src = "img/eyeclose.png";
+            }
+        }
+    </script>
 </body>
 </html>

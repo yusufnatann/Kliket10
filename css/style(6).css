@@ -166,22 +166,6 @@ nav ul li a:hover::after {
     transition: 0.2s ease-out;
 }
 
-.search-form1 {
-    /* display: flex; */
-    /* align-items: center; */
-    position: absolute;
-    top: 355px; /* Sesuaikan dengan jarak dari atas yang diinginkan */
-    left: 730px; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
-    /* z-index: 999; */
-    margin-top: 5px;
-    padding: 0;
-}
-
-.search-form1 input[type="text"] {
-    width: calc(100% - 20px); /* Adjust width to fit container */
-    margin-left: 5px; /* Align input field to the left */
-}
-
 .navmenu li:hover a {
     transition: 1s;
     background-color: #0D6EFD;
@@ -271,7 +255,7 @@ input:checked ~ .bartiga {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 100vh; /* Pastikan kontainer utama memiliki tinggi minimum 100% dari viewport */
     padding: 20px;
     box-sizing: border-box;
@@ -288,34 +272,6 @@ input:checked ~ .bartiga {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-}
-
-.search-form,
-.add-route-button {
-    margin-left: auto; /* Pindahkan form pencarian dan tombol ke kanan */
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 105px; /* Sesuaikan dengan jarak dari atas yang diinginkan */
-    right: 130px; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
-    z-index: 999;
-}
-
-.addtiket{
-    margin-left: auto; /* Pindahkan form pencarian dan tombol ke kanan */
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 100px; /* Sesuaikan dengan jarak dari atas yang diinginkan */
-    right: 20px; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
-    z-index: 999;
-    background-color: #5B6AD0; /* Warna latar belakang sesuai dengan yang diinginkan */
-    color: white; /* Warna teks putih agar kontras dengan latar belakang */
-    padding: 7px 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .search-bar input {
@@ -358,11 +314,11 @@ input:checked ~ .bartiga {
 .table-container {
     overflow-x: auto;
     width: 100%; 
-    margin-top: 35px;
+    margin-top: 20px;
     margin-left: 0; /* Menghapus margin kiri */
     margin-right: 0; /* Menghapus margin kanan */
-    position: absolute;
-    top: 140px;
+    position: relative;
+    top: auto;
 }
 
 .order-table {
@@ -547,21 +503,57 @@ input:checked ~ .bartiga {
     background-color: #d7d7d7;
 }
 
+.nav-container {
+    display: flex;
+    justify-content: flex-end; /* Mengatur elemen-elemen agar berjarak satu sama lain */
+    align-items: center;
+    width: 100%; /* Pastikan container mengambil lebar penuh */
+    margin-bottom: 20px; /* Menambahkan margin-bottom untuk memberikan jarak dengan tabel */
+}
+
+.search-form {
+    flex-grow: 1;
+    margin-right: 10px;
+    max-width: 400px; /* Menambahkan max-width agar search box tidak terlalu besar */
+}
+
 .search-box {
     position: relative;
-    margin-bottom: 1rem;
-    top: -7px;
+    width: 100%;
 }
+
 .search-box input {
     width: 100%;
     padding: 0.5rem 2.5rem 0.5rem 1rem;
     border-radius: 5px;
     border: 1px solid #ced4da;
 }
+
 .search-box i {
     position: absolute;
-    right: 1rem;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     color: #ced4da;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.addtiket,
+.addbus {
+    background-color: #5B6AD0;
+    color: white; 
+    padding: 7px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.addtiket:hover,
+.addbus:hover {
+    background-color: #4a5db1; 
 }

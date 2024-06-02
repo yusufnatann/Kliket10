@@ -29,7 +29,7 @@
                     </a>
                 </div>
                 <div class="item">
-                    <a href="">
+                    <a href="admpenjualan.php">
                     <img src="../img/datapenjualan.png" alt="Data Penjualan">
                     <h3>Data Penjualan</h3>
                     </a>

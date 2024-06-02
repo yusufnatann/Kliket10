@@ -18,8 +18,8 @@
                 <ul class="navmenu">
                     <li><a href="admpetugas.php"><img src="../img/petugas.png" class="icon">Petugas Terminal</a></li>
                     <li><a href="admtiket.php"><img src="../img/kelolatiket.png" class="icon">Kelola Tiket</a></li>
-                    <li><a href="#"><img src="../img/datapenjualan.png" class="icon">Data Penjualan</a></li>
-                    <li><a href="#"><img src="../img/validasipembayaran.png" class="icon">Validasi Pembayaran</a></li>
+                    <li><a href="admpenjualan.php"><img src="../img/datapenjualan.png" class="icon">Data Penjualan</a></li>
+                    <li><a href="admvalidasi.php"><img src="../img/validasipembayaran.png" class="icon">Validasi Pembayaran</a></li>
                     <li><a href="../database/logout.php"><img src="../img/keluar.png" class="icon">Keluar</a></li>
                 </ul>
             </div>

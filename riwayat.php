@@ -75,6 +75,10 @@ $tiketResult = $stmt->get_result();
                             echo "<td>";
                             if ($row['valid'] == 1) {
                                 echo "Valid";
+                            } elseif ($row['valid'] == 2) {
+                                echo "Tidak valid";
+                            } elseif ($row['valid'] == 2 || $row['pembayaran'] == 2) {
+                                echo "Tidak valid";
                             } else {
                                 echo "Belum Valid";
                             }

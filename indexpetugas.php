@@ -14,9 +14,8 @@ include 'database/authPetugas.php';
 <body>
     <div class="navbar">
         <div class="container">
-            <a href="index.html"><img src="img/Kliket-logo-blue.png" class="logo"></a>
+            <a href="indexpetugas.php"><img src="img/Kliket-logo-blue.png" class="logo"></a>
             <ul class="nav-items">
-                <li><a href="index.php">Home</a></li>
                 <li><a href="Login.html"><img src="img/image 5.png" class="logout"></a></li>
                 <li><a href="database/logout.php">Keluar</a></li>
             </ul>
