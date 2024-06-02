@@ -57,6 +57,22 @@ include 'database/auth.php';
         } else {
             echo "<p>Informasi pembayaran tidak valid.</p>";
         }
+
+        if (isset($_GET['status'])) {
+            $status = $_GET['status'];
+            $message = isset($_GET['message']) ? urldecode($_GET['message']) : '';
+            if ($status === 'berhasil') {
+                echo "<script>
+                        alert('Berhasil');
+                        window.location.href = 'index.php';
+                      </script>";
+            } else if ($status === 'gagal') {
+                echo "<script>
+                        alert('Tidak berhasil! $message');
+                        window.location.href = 'index.php';
+                      </script>";
+            }
+        }
         ?>
     </div>
 </body>
