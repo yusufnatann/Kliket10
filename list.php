@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tabel.css">
     <link rel="stylesheet" href="css/result.css">
+    <link rel="stylesheet" href="css/font.css">
     <script src="https://kit.fontawesome.com/f1396b40aa.js" crossorigin="anonymous"></script>
 </head>
 <body>

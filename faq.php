@@ -11,11 +11,13 @@ include 'database/auth.php';
     <title>Kliket - Home</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" href="css/font.css">
+    
 </head>
 <body>
     <!-- Navbar -->
     <?php
-    include 'database/navbar.php';
+    include 'navbar.php';
     ?>
 
     <div class="faq-container">
