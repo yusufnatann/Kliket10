@@ -3,7 +3,6 @@
 }
 
 .cont {
-    padding-top: 10px;
     padding-right: 70px;
     padding-left: 70px;
     box-sizing: border-box;
@@ -11,7 +10,7 @@
 
 .cont li a {
     text-decoration: none;
-    color: #333;
+    color: #5c5858;
     font-size: 14px;
     padding: 10px;
     border: 1px solid #cacaca;
@@ -25,29 +24,45 @@
     justify-content: space-around;
     width: 30px;
     height: 24px;
-    margin: 10px 30px;
+    margin: 5px 30px;
+}
+
+.nav{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 70px;
 }
 
 .navmenu{
     padding-left: 40px;
-    top: 50px;
-    padding-top: 40px;
+    top: 0;
+    padding-top: 80px;
     font-family: "montserrat", poppins;
     font-size: 13px;
-    color: rgb(53, 53, 53);
+    background-color: white;
     width: 250px;
+    height: 900px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navmenu li a{
     padding: 10px 10px;
     border-radius: 5px;
+    color: #5c5858;
 }
 
 .navmenu li a .icon {
     margin-right: 16px; 
     width: 20px;
+    color: #5c5858;
 }
 
 .bartiga {
-    width: 250px;
+    width: 249px;
+    color:#5c5858;
+    left: -90px;
+}
+
+.hiddens:checked ~ .bartiga {
+    left: 0; /* Move into view */
 }

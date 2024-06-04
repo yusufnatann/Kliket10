@@ -7,14 +7,14 @@
     background: url('img/background_pesan.png') no-repeat center center/cover;
 }
 .boxs {
-    background: rgba(235, 235, 235, 0.9);
-    margin-top: px;
+    background: rgba(244, 244, 244, 0.966);
+    margin-top: 150px;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 500px;
-    height: 500px;
+    max-width: 905px;
+    height: 450px;
 }
 .boxs h1 {
     margin: 0 0 20px;
@@ -23,25 +23,31 @@
     display: block;
     margin-bottom: 5px;
     text-align: left;
+    color:  #5c5858;
+    font-size: smaller;
 }
 
 .boxs select, .boxs input {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #7a828e;
     border-radius: 5px;
     appearance: none;
     background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="%23333" d="M12 14.5l-6-6h12z"/></svg>') no-repeat right 10px center;
     background-size: 12px;
+    font-family: "montserrat", poppins;
+    color: #8faad2;
 }
 
 .boxs input {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #7a828e;
     border-radius: 5px;
+    font-family: "montserrat", poppins;
+    color: #8faad2;
 }
 
 .boxs input[type="radio"] {
@@ -51,9 +57,11 @@
     display: inline-block;
     padding: 8px;
     margin: 0 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #7a828e;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "montserrat", poppins;
+    color: #8faad2;
 }
 
 .boxs input[type="radio"]:checked + .check-label {
@@ -97,3 +105,18 @@
 .boxs button:hover {
     background-color: #45a049;
 }
+
+#tujuan:focus,
+        #tujuan:valid {
+            color: #242526; /* Solid color when an option is selected */
+        }
+
+#asal:focus,
+        #asal:valid {
+            color: #242526; /* Solid color when an option is selected */
+        }
+
+#tanggal_berangkat:focus,
+        #tanggal_berangkat:valid {
+            color: #242526; /* Solid color when an option is selected */
+        }
