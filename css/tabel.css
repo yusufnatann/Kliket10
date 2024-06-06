@@ -1,6 +1,15 @@
 .table-container {
-    max-height: 150px; /* Atur tinggi maksimal sesuai kebutuhan */
+    max-height: 250px; /* Atur tinggi maksimal sesuai kebutuhan */
     overflow-y: auto;
+    padding: 0 10px;
+}
+
+.table-container tbody tr:nth-child(even) {
+    background-color: #ececece6;
+}
+
+.table-container tbody tr:nth-child(odd) {
+    background-color: #f6f6f6; 
 }
 
 table {
@@ -11,8 +20,17 @@ table {
 th, td {
     padding: 8px 12px;
     text-align: left;
+    color: #444444;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color:#444444;
+    color: whitesmoke;
+    font-weight: normal;
+}
+
+.boxxs{
+    padding-top: 20px;
+    padding-left: 20px;
+    color: #444444;
 }

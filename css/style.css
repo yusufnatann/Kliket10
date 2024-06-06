@@ -384,11 +384,14 @@ input:checked ~ .bartiga{
     justify-content: center;
     width: 100vw;
     height: 35vw;
-    margin-top: 20px;
 }
 
 .cons .bg_pesan{
     align-self: center;
+}
+
+.bg_pesan{
+    width: 920px;
 }
 
 .cons .boxs{
@@ -397,14 +400,15 @@ input:checked ~ .bartiga{
 
 .boxs{
     display: grid;
-    margin-top: 190px;
+    margin-top: 150px;
     width: 920px;
-    height: 250px;
+    height: 350px;
     outline: none;
     border: none;
     border: 2px solid rgba(255,255,255, 0.2);
     border-radius: 14px;
-    background-color: #F0F0F0;
+    background-color: #f0f0f0d5;
+    backdrop-filter: blur(5px);
 }
 
 .boxs .pesan-title{

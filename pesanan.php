@@ -31,7 +31,7 @@ include 'database/auth.php';
         </div>
         <!-- Tabel disini -->
         <div class="table-container">
-            <table border="1">
+            <table border="0" class="styled-table">
                 <thead>
                     <tr>
                         <th>No</th>
