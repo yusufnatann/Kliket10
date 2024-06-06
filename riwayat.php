@@ -21,6 +21,7 @@ $tiketResult = $stmt->get_result();
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tabel.css">
+    <link rel="stylesheet" href="css/font.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/f1396b40aa.js" crossorigin="anonymous"></script>
@@ -40,7 +41,7 @@ $tiketResult = $stmt->get_result();
         </div>
         <!-- Tabel disini -->
         <div class="table-container">
-            <table border="1">
+            <table border="0" class= styled-table>
                 <thead>
                     <tr>
                         <th>No</th>
