@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Tanggal berangkat tidak bisa kemarin.");
     }
 
-    $query = "SELECT * FROM rute WHERE asal = ? AND tujuan = ? AND (tanggal_berangkat > ? OR (tanggal_berangkat = ? AND waktu_berangkat > ?))";
+    $query = "SELECT * FROM rute WHERE asal = ? AND tujuan = ? AND (tanggal_berangkat > ? OR (tanggal_berangkat = ? AND waktu_berangkat >= ?))";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sssss", $asal, $tujuan, $tanggal_berangkat, $tanggal_berangkat, $waktu_berangkat);
     $stmt->execute();
