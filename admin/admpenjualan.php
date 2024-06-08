@@ -48,7 +48,8 @@
 
     if ($search) {
         $result .= " AND (p.nama LIKE '%$search%' OR r.asal LIKE '%$search%' 
-                     OR r.tujuan LIKE '%$search%' OR t.tiketID LIKE '%$search%')";
+                     OR r.tujuan LIKE '%$search%' OR t.tiketID LIKE '%$search%'
+                     OR t.kode_unik_bank LIKE '%$search%%')";
     }
 
     $results = $conn->query($result);
