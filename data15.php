@@ -24,6 +24,12 @@ $tanggal = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');
     </div>
     
     <h1>Daftar Pesanan</h1>
+    <form method="GET" action="">
+        <label for="tanggal">Pilih Tanggal:</label>
+        <input type="date" id="tanggal" name="tanggal" value="<?php echo $tanggal; ?>">
+        <button type="submit">Tampilkan</button>
+    </form>
+    
     <table class="order-table">
         <thead>
             <tr>

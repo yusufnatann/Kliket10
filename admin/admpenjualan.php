@@ -21,26 +21,47 @@
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $start = ($page > 1) ? ($page * $limit) - $limit : 0;
     
-    $result = $conn->query("SELECT COUNT(*) AS total FROM tiket WHERE valid = 1");
-    $total = $result->fetch_assoc()['total'];
-    $pages = ceil($total / $limit);
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
     
-    $query = $conn->query("
+    $resquery = "
         SELECT t.tiketID, p.nama, r.asal, r.tujuan, r.harga, t.kode_unik_bank
         FROM tiket t
         JOIN pengguna p ON t.userID = p.userID
         JOIN rute r ON t.ruteID = r.ruteID
         WHERE t.valid = 1
-        LIMIT $start, $limit
-    ");
+    ";
 
-    $total_query = $conn->query("
+    if ($search) {
+        $resquery .= " AND (p.nama LIKE '%$search%' OR r.asal LIKE '%$search%' 
+                       OR r.tujuan LIKE '%$search%' OR t.tiketID LIKE '%$search%')";
+    }
+
+    $resquery .= " LIMIT $start, $limit";
+
+    $query = $conn->query($resquery);
+
+    $result = "SELECT COUNT(*) AS total
+               FROM tiket t
+               JOIN pengguna p ON t.userID = p.userID
+               JOIN rute r ON t.ruteID = r.ruteID
+               WHERE t.valid = 1";
+
+    if ($search) {
+        $result .= " AND (p.nama LIKE '%$search%' OR r.asal LIKE '%$search%' 
+                     OR r.tujuan LIKE '%$search%' OR t.tiketID LIKE '%$search%')";
+    }
+
+    $results = $conn->query($result);
+    $total = $results->fetch_assoc()['total'];
+    $pages = ceil($total / $limit);
+
+    $total_penjualan_query = $conn->query("
         SELECT SUM(r.harga) AS total_penjualan
         FROM tiket t
         JOIN rute r ON t.ruteID = r.ruteID
         WHERE t.valid = 1
     ");
-    $total_penjualan = $total_query->fetch_assoc()['total_penjualan'];
+    $total_penjualan = $total_penjualan_query->fetch_assoc()['total_penjualan'];
     ?>
 
     <!-- Tabel tiket -->
@@ -93,17 +114,19 @@
                     ?>
                 </tbody>
             </table>
-            <div class="pagination">
-                <?php if ($page > 1): ?>
-                    <a href="?page=<?php echo $page - 1; ?>">Previous</a>
-                <?php endif; ?>
-                <?php for ($i = 1; $i <= $pages; $i++): ?>
-                    <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                <?php endfor; ?>
-                <?php if ($page < $pages): ?>
-                    <a href="?page=<?php echo $page + 1; ?>">Next</a>
-                <?php endif; ?>
-            </div>
+            <?php if ($pages > 1) : ?>
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?php echo $page - 1; ?>&search=<?php echo $search; ?>">Previous</a>
+                    <?php endif; ?>
+                    <?php for ($i = 1; $i <= $pages; $i++): ?>
+                        <a href="?page=<?php echo $i; ?>&search=<?php echo $search; ?>"><?php echo $i; ?></a>
+                    <?php endfor; ?>
+                    <?php if ($page < $pages): ?>
+                        <a href="?page=<?php echo $page + 1; ?>&search=<?php echo $search; ?>">Next</a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </body>
