@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </table>
                     </div>
                 <?php else: ?>
-                    <p>Tiket tidak ditemukan.</p>
+                    <p class="no-tiket">Tiket tidak ditemukan.</p>
                 <?php endif; ?>
             </div>
         </div>
