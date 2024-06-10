@@ -101,7 +101,7 @@ $tiketResult = $stmt->get_result();
     <div class="ticket" style="display:none;">
         <img src="img/img8.jpeg" alt="Travel Image">
         <div class="ticket-info">
-            <h1>E Tiket</h1>
+            <h2 style='font-size: 24px; color: #5c5858'>E-tiket</h2>
             <div id="ticket-details">
                 <!-- showdetail.php -->
             </div>
