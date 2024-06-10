@@ -18,10 +18,10 @@ $tiketResult = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Tiket</title>
-    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tabel.css">
     <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/detail.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/f1396b40aa.js" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@ $tiketResult = $stmt->get_result();
     <div class="boxs">
         <div class="boxxs">
             <h1 class="pesan-title">Daftar Tiket Saya</h1>
-            <p class="pesan-sub"> </p>
+            <p class="pesan-sub"></p>
         </div>
         <!-- Tabel disini -->
         <div class="table-container">
@@ -98,23 +98,15 @@ $tiketResult = $stmt->get_result();
         </div>
     </div>
 
-    <div class="modal fade" id="ticketDetailsModal" tabindex="-1" aria-labelledby="ticketDetailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ticketDetailsModalLabel">Detail Tiket</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- showdetail.php -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                </div>
+    <div class="ticket" style="display:none;">
+        <img src="img/img8.jpeg" alt="Travel Image">
+        <div class="ticket-info">
+            <h1>E Tiket</h1>
+            <div id="ticket-details">
+                <!-- showdetail.php -->
             </div>
         </div>
+        <button class="close-button" onclick="closeTicketDetails()">Tutup</button>
     </div>
 </div>
 </body>
@@ -127,10 +119,14 @@ $tiketResult = $stmt->get_result();
             type: 'GET',
             data: { tiketID: tiketID },
             success: function(data) {
-                $('#ticketDetailsModal .modal-body').html(data);
-                $('#ticketDetailsModal').modal('show');
+                $('#ticket-details').html(data);
+                $('.ticket').show();
             }
         });
+    }
+
+    function closeTicketDetails() {
+        $('.ticket').hide();
     }
 
     $(document).ready(function() {

@@ -17,12 +17,9 @@ if (isset($_GET['tiketID'])) {
         $row = $result->fetch_assoc();
         echo "<p>ID Tiket: " . $row['tiketID'] . "</p>";
         echo "<p><br></p>";
-        echo "<p>Terminal Asal: " . $row['asal'] . "</p>";
-        echo "<p>Terminal Tujuan: " . $row['tujuan'] . "</p>";
-        echo "<p>Waktu Berangkat: " . $row['waktu_berangkat'] . "</p>";
+        echo "<p>" . $row['asal'] . " - " . $row['tujuan'] . "</p>";
         echo "<p>Tanggal Berangkat: " . $row['tanggal_berangkat'] . "</p>";
-        echo "<p>Status Pembayaran: " . ($row['pembayaran'] == 1 ? "Sudah Bayar" : ($row['pembayaran'] == 2 ? "Batal" : "Belum Dibayar")) . "</p>";
-        echo "<p>Status Validasi: " . ($row['valid'] == 1 ? "Valid" : "Belum Valid") . "</p>";
+        echo "<p>Waktu Berangkat: " . $row['waktu_berangkat'] . "</p>";
     } else {
         echo "<p>Detail tiket tidak ditemukan.</p>";
     }
