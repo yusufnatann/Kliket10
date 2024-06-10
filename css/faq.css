@@ -1,7 +1,7 @@
 .faq-container {
     max-width: 900px;
     margin: 50px auto 0;
-    font-family: poppins, sans-serif;
+    font-family: montserrat, poppins,;
     background-color: rgb(238, 238, 238);
     outline: #ccc solid 1px;
     border-radius: 10px;
@@ -34,6 +34,7 @@ summary {
 
 summary::after {
     content: ">";
+    font-family: poppins, sans-serif;
     rotate: 90deg;
     color: #ffffff;
     background-color:#0D6EFD;
