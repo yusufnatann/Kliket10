@@ -17,8 +17,7 @@ if (isset($_GET['tiketID'])) {
         $row = $result->fetch_assoc();
         echo "<p>ID Tiket: " . $row['tiketID'] . "</p>";
         echo "<p><br></p>";
-        echo "<p>" . $row['asal'] . " - " . $row['tujuan'] . "</p>";
-        echo "<p>Tanggal Berangkat: " . $row['tanggal_berangkat'] . "</p>";
+        echo "<p style='font-size: 24px;'>" . $row['asal'] . " - " . $row['tujuan'] . "</p>";        echo "<p>Tanggal Berangkat: " . $row['tanggal_berangkat'] . "</p>";
         echo "<p>Waktu Berangkat: " . $row['waktu_berangkat'] . "</p>";
     } else {
         echo "<p>Detail tiket tidak ditemukan.</p>";
