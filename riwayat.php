@@ -37,7 +37,7 @@ $tiketResult = $stmt->get_result();
     <div class="boxs">
         <div class="boxxs">
             <h1 class="pesan-title">Daftar Tiket Saya</h1>
-            <p class="pesan-sub">Ayo bayar tiket sekarang!</p>
+            <p class="pesan-sub"></p>
         </div>
         <!-- Tabel disini -->
         <div class="table-container">
