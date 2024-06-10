@@ -25,7 +25,7 @@
                         <input type="email" class="inp-b" id="Email" name="email" placeholder="Email" required>
                     </div>
                     <div class="input-box-pass">
-                        <input type="password" class="inp-b" id="password" name="password" placeholder="Password" required>
+                        <input type="password" class="inp-b" id="password" name="password" placeholder="Kata Sandi" required>
                         <img src="../img/eyeclose.png" id="eyeicon">
                     </div>
                     <button type="submit" class="btn">Daftar</button>
