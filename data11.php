@@ -1,3 +1,9 @@
+<?php
+include 'database/koneksi.php';
+include 'database/authPetugas.php';
+
+$tanggal = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');
+?>
 <!DOCTYPE html>
 <html>
 <head>
