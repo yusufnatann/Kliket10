@@ -17,12 +17,12 @@ function updateStatus(button, status) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("tiketID=" + tiketID + "&status=" + status);
         
-        xhr.onload = function() {
-            if (xhr.status == 200) {
-                alert("Status berhasil diperbarui");
-            } else {
-                alert("Terjadi kesalahan saat memperbarui status");
-            }
-        };
+        // xhr.onload = function() {
+        //     if (xhr.status == 200) {
+        //         alert("Status berhasil diperbarui");
+        //     } else {
+        //         alert("Terjadi kesalahan saat memperbarui status");
+        //     }
+        // };
     }
 }
