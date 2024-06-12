@@ -18,7 +18,7 @@ $tanggal = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');
         <div class="container">
             <a href="indexpetugas.php"><img src="img/Kliket-logo-blue.png" class="logo"></a>
             <ul class="nav-items">
-                <li><em>Bandar Lampung 11.00</em></li>
+                <li><em>Bandar Lampung 08.00</em></li>
             </ul>
         </div>
     </div>
