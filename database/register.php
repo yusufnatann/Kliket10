@@ -10,29 +10,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = mysqli_real_escape_string($conn, $password);
     $email = mysqli_real_escape_string($conn, $email);
 
-    $conn->begin_transaction();
+    $checkSQL = "SELECT * FROM akun where username = '$username'";
+    $checkRes = $conn->query($checkSQL);
+    
+    if ($checkRes->num_rows > 0){
+        header("Location: ../register.php?error=taken");
+    } else {
+        $conn->begin_transaction();
 
-    try {
-        $sql1 = "INSERT INTO akun (username, kategoriID, kata_sandi) VALUES ('$username', '3', '$password')";
-        if ($conn->query($sql1) === TRUE) {
-            $userid = $conn->insert_id;
+        try {
+            $sql1 = "INSERT INTO akun (username, kategoriID, kata_sandi) VALUES ('$username', '3', '$password')";
+            if ($conn->query($sql1) === TRUE) {
+                $userid = $conn->insert_id;
 
-            $sql2 = "INSERT INTO pengguna (userid, username, nama, email) VALUES ('$userid', '$username', '$username', '$email')";
-            if ($conn->query($sql2) === TRUE) {
-                $conn->commit();
-                header("Location: ../login.php");
-                exit();
+                $sql2 = "INSERT INTO pengguna (userid, username, nama, email) VALUES ('$userid', '$username', '$username', '$email')";
+                if ($conn->query($sql2) === TRUE) {
+                    $conn->commit();
+                    header("Location: ../login.php");
+                    exit();
+                } else {
+                    $conn->rollback();
+                    echo "Error: " . $conn->error;
+                }
             } else {
                 $conn->rollback();
                 echo "Error: " . $conn->error;
             }
-        } else {
+        } catch (Exception $e) {
             $conn->rollback();
-            echo "Error: " . $conn->error;
+            echo "Exception: " . $e->getMessage();
         }
-    } catch (Exception $e) {
-        $conn->rollback();
-        echo "Exception: " . $e->getMessage();
     }
 }
 ?>

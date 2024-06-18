@@ -66,6 +66,10 @@ if (isset($_SESSION['username'])){
                 eyeicon.src = "img/eyeclose.png";
             }
         }
+
+        <?php if (isset($_GET['error']) && $_GET['error'] == 'taken'): ?>
+            alert('Username sudah terdaftar, silakan pilih username lain.');
+        <?php endif; ?>
     </script>
 </body>
 </html>
