@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql2 = "INSERT INTO pengguna (userid, username, nama, email) VALUES ('$userid', '$username', '$username', '$email')";
             if ($conn->query($sql2) === TRUE) {
                 $conn->commit();
-                header("Location: ../login.html");
+                header("Location: ../login.php");
                 exit();
             } else {
                 $conn->rollback();

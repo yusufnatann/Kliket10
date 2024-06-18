@@ -1,5 +1,8 @@
 <?php
 include 'database/koneksi.php';
+if (isset($_SESSION['username'])){
+    header("Location: admin/admutama.php");
+}
 
 if (isset($_GET['userID'])) {
     $userID = $_GET['userID'];
@@ -17,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($update_stmt->execute()) {
         echo "Password berhasil diperbarui. Silakan login dengan password baru Anda.";
-        header("Location: login.html");
+        header("Location: login.php");
         exit();
     } else {
         echo "Terjadi kesalahan saat memperbarui password.";

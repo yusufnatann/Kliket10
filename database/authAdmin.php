@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['username']) || !isset($_SESSION['userID'])) {
-    header("Location: login.html");
+    header("Location: login.php");
     exit();
 }
 

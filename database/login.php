@@ -46,14 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['login_error'] = "Password salah";
                 mysqli_free_result($result);
                 mysqli_close($conn);
-                header("Location: ../login.html");
+                header("Location: ../login.php");
                 exit();
             }
         } else {
             $_SESSION['login_error'] = "Username tidak ditemukan";
             mysqli_free_result($result);
             mysqli_close($conn);
-            header("Location: ../login.html");
+            header("Location: ../login.php");
             exit();
         }
     } else {

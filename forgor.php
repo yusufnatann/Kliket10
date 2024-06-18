@@ -1,3 +1,9 @@
+<?php
+include 'database/koneksi.php';
+if (isset($_SESSION['username'])){
+    header("Location: admin/admutama.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +31,15 @@
                     </div>
                     <button type="submit" class="btn">Submit</button>
                     <div class="register-link">
-                        <p>Sudah punya akun? <a href="login.html">Login</a></p>
+                        <p>Sudah punya akun? <a href="login.php">Login</a></p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    
+    <!-- Loading -->
+    <div class="loader"></div>
     
     <!-- Script for show/hide password -->
     <script>

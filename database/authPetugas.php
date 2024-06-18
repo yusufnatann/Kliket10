@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username']) || !isset($_SESSION['userID'])) {
-    header("Location: login.html");
+    header("Location: login.php");
     exit();
 }
 
@@ -19,7 +19,7 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
 if ($user) {
-    header("Location: error/error.html");
+    header("Location: index.php");
     exit();
 }
 
