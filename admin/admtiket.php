@@ -26,7 +26,7 @@
                 </div>
             </form>
             <div class="button-container">
-                <a href="admbus.php"><button class="addbus">Kelola Bus</button></a>
+                <button class="addbus">Tambah Bus</button>
                 <button class="addtiket">Tambah Rute</button>
             </div>
         </div>
@@ -214,6 +214,23 @@
         </div>
     </div>
 
+    <!-- form tambah bus -->
+    <div id="addBusModal" class="modal">
+        <div class="modal-content">
+            <span class="close-bus">&times;</span>
+            <form id="addBusForm" action="../database/tambahbus.php" method="POST">
+                <h2>Tambah Bus Baru</h2>
+                <label for="nama_bus">Nama Bus:</label>
+                <input type="text" id="nama_bus" name="nama_bus" required>
+
+                <label for="kapasitas">Kapasitas:</label>
+                <input type="number" id="kapasitas" name="kapasitas" required>
+
+                <button type="submit">Tambah Bus</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         var modal = document.getElementById("addRuteModal");
         var btn = document.querySelector(".addtiket");
@@ -230,6 +247,24 @@
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+        }
+
+        var busModal = document.getElementById("addBusModal");
+        var busBtn = document.querySelector(".addbus");
+        var busSpan = document.getElementsByClassName("close-bus")[0];
+
+        busBtn.onclick = function() {
+            busModal.style.display = "block";
+        }
+
+        busSpan.onclick = function() {
+            busModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == busModal) {
+                busModal.style.display = "none";
             }
         }
 
