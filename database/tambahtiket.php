@@ -9,15 +9,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $busID = $_POST['busID'];
     $harga = $_POST['harga'];
 
-    $sql = "INSERT INTO rute (asal, tujuan, waktu_berangkat, tanggal_berangkat, busID, harga) VALUES ('$asal', '$tujuan', '$waktu_berangkat', '$tanggal_berangkat', '$busID', '$harga')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Rute baru berhasil ditambahkan";
+    if ($asal == $tujuan){
+        header("Location: ../admin/admtiket.php?error=asal_tujuan");
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+        $sql = "INSERT INTO rute (asal, tujuan, waktu_berangkat, tanggal_berangkat, busID, harga) VALUES ('$asal', '$tujuan', '$waktu_berangkat', '$tanggal_berangkat', '$busID', '$harga')";
 
-    header("Location: ../admin/admtiket.php");
-    exit();
+        if ($conn->query($sql) === TRUE) {
+            echo "Rute baru berhasil ditambahkan";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        header("Location: ../admin/admtiket.php");
+        exit();
+    }
 }
 ?>

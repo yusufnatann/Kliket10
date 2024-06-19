@@ -304,6 +304,10 @@
                 window.location.href = '../database/hapustiket.php?id=' + id;
             }
         }
+
+        <?php if (isset($_GET['error']) && $_GET['error'] == 'asal_tujuan'): ?>
+            alert('Asal dan Tujuan tidak boleh sama!');
+        <?php endif; ?>
     </script>
 </body>
 </html>
